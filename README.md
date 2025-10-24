@@ -1,4 +1,4 @@
-# Data-Structures-and-Algorithms-implementation-in-JavaScript
+# Data-Structures-and-Algorithms-implementation
 
 Explore a collection of JavaScript implementations for various data structures and algorithms.
 
