@@ -39,7 +39,7 @@ public class DoublyLinkedList {
     public void insertEnd(int value) {
         DoublyListNode newNode = new DoublyListNode(value);
 
-        if (head != tail) {
+        if (!isEmpty()) {
             newNode.prev = tail;
         }
         tail.next = newNode;
@@ -49,7 +49,7 @@ public class DoublyLinkedList {
     }
 
     public void removeFront() {
-        if (tail == head) {
+        if (isEmpty()) {
             return;
         }
 
@@ -65,7 +65,7 @@ public class DoublyLinkedList {
     }
 
     public void removeEnd() {
-        if (tail == head) {
+        if (isEmpty()) {
             return;
         }
 
@@ -74,6 +74,24 @@ public class DoublyLinkedList {
         tail.next = null;
 
         return;
+    }
+
+    public boolean isEmpty(){
+        return head.next == null;
+    }
+
+    public Integer getFirstValue(){
+        if(isEmpty()){
+            return null;
+        }
+        return head.next.value;
+    }
+
+    public Integer getLastValue(){
+        if(isEmpty()){
+           return null;
+        }
+        return tail.value;
     }
 
     @Override

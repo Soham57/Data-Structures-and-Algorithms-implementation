@@ -145,4 +145,86 @@ public class DoublyLinkedListTest {
 
         assertEquals("", list.toString());
     }
+
+    @Test
+    void isEmpty_ShouldReturnTrueOnEmptyList() {
+        assertTrue(list.isEmpty());
+    }
+
+    @Test
+    void isEmpty_ShouldReturnFalseOnNonEmptyList() {
+        list.insertFront(10);
+        assertFalse(list.isEmpty());
+    }
+
+    @Test
+    void isEmpty_ShouldReturnTrueAfterRemovingLastElement() {
+        list.insertFront(10);
+        list.removeFront();
+        assertTrue(list.isEmpty());
+    }
+
+    // --- Tests for getFirstValue() ---
+
+    @Test
+    void getFirstValue_ShouldReturnNullOnEmptyList() {
+        assertNull(list.getFirstValue());
+    }
+
+    @Test
+    void getFirstValue_ShouldReturnCorrectValueAfterInsertFront() {
+        list.insertFront(5);
+        assertEquals(5, list.getFirstValue());
+    }
+
+    @Test
+    void getFirstValue_ShouldReturnCorrectValueAfterInsertEnd() {
+        list.insertEnd(15);
+        assertEquals(15, list.getFirstValue());
+    }
+
+    @Test
+    void getFirstValue_ShouldReturnFirstElementWhenMultipleExist() {
+        list.insertFront(10);
+        list.insertEnd(20);
+        list.insertFront(5);
+        assertEquals(5, list.getFirstValue());
+    }
+
+    // --- Tests for getLastValue() ---
+
+    @Test
+    void getLastValue_ShouldReturnNullOnEmptyList() {
+        assertNull(list.getLastValue());
+    }
+
+    @Test
+    void getLastValue_ShouldReturnCorrectValueAfterInsertEnd() {
+        list.insertEnd(25);
+        assertEquals(25, list.getLastValue());
+    }
+
+    @Test
+    void getLastValue_ShouldReturnCorrectValueAfterInsertFront() {
+        list.insertFront(35);
+        assertEquals(35, list.getLastValue());
+    }
+
+    @Test
+    void getLastValue_ShouldReturnLastElementWhenMultipleExist() {
+        list.insertFront(10);
+        list.insertFront(5);
+        list.insertEnd(30);
+        assertEquals(30, list.getLastValue());
+    }
+
+    @Test
+    void getLastValue_ShouldReturnCorrectValueAfterRemoval() {
+        list.insertEnd(10);
+        list.insertEnd(20);
+        list.insertEnd(30);
+
+        list.removeEnd(); // Remove 30
+        assertEquals(20, list.getLastValue());
+    }
 }
